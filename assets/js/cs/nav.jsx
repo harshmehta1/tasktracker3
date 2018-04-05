@@ -4,6 +4,8 @@ import { Form, FormGroup, NavItem, Input, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import api from '../api';
 
+let user_name = "";
+
 let LoginForm = connect(({login}) => {return {login};})((props) => {
   function update(ev) {
     let tgt = $(ev.target);
@@ -43,15 +45,22 @@ let Session = connect(({token}) => {return {token};})((props) => {
     });
   }
 
+  console.log("SESSION")
+  console.log(props)
+
+  // let user_name = "demo";
   return <div className="navbar-text">
-    User id = { props.token.user_id } | <Button className="btn btn-primary" onClick={logout}>Log out</Button>
+    Welcome { user_name.name } | <Button className="btn btn-primary" onClick={logout}>Log out</Button>
   </div>;
 });
 
 function Nav(props) {
   let session_info;
-
+  console.log("NAV")
+  console.log(props)
  if (props.token) {
+   user_name = _.find(props.users, (pp) => props.token.user_id == pp.id );
+   console.log(user_name)
    session_info = <Session token={props.token} />;
     api.request_tasks();
  }

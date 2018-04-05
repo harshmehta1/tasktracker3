@@ -27,7 +27,7 @@ let Tasktracker = connect((state) => state)((props) => {
     return (
       <Router>
         <div>
-          <Nav />
+          <Nav users={props.users}/>
           <Route path="/" exact={true} render={() =>
             <div>
               <TaskForm users={props.users} user={props.token.user_id}/>
