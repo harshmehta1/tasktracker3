@@ -28,7 +28,7 @@ function Task(params) {
 
   function del(ev){
     api.delete_task(params.task.id);
-    api.request_tasks(params.user);
+    api.request_tasks();
   }
 
 

@@ -40,9 +40,19 @@ function TaskForm(params) {
   }
 
   function submit(ev) {
-    if (params.form.time_spent % 15 == 0){
+    if (params.form.title == "" || params.form.desc == "" || params.form.user_id == "" || params.form.time_spent == ""){
+      alert("Cannot submit incomplete form");
+    } else if (params.form.time_spent % 15 == 0){
       api.submit_task(params.form, params.user);
       clear(ev);
+
+      let newer = {user_id: params.user};
+      let action2 = {
+        type: 'UPDATE_USERID',
+        data: newer,
+      }
+      params.dispatch(action2);
+
     } else {
       alert("Time Spent has to be in intervals of 15");
     }

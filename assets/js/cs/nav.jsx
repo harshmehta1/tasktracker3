@@ -53,7 +53,7 @@ function Nav(props) {
 
  if (props.token) {
    session_info = <Session token={props.token} />;
-    api.request_tasks(props.token.user_id);
+    api.request_tasks();
  }
  else {
    session_info = <LoginForm />
@@ -66,7 +66,7 @@ function Nav(props) {
       </span>
       <ul className="navbar-nav mr-auto">
         <NavItem>
-          <NavLink to="/" exact={true} activeClassName="active" className="nav-link">Feed</NavLink>
+          <NavLink to="/" exact={true} activeClassName="active" className="nav-link">TaskFeed</NavLink>
         </NavItem>
         <NavItem>
           <NavLink to="/users" href="#" className="nav-link">All Users</NavLink>

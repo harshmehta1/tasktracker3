@@ -31,7 +31,8 @@ let Tasktracker = connect((state) => state)((props) => {
           <Route path="/" exact={true} render={() =>
             <div>
               <TaskForm users={props.users} user={props.token.user_id}/>
-              <Feed user={props.token.user_id} tasks={props.tasks} />
+              <Feed user={props.token.user_id} tasks={_.filter(props.tasks, (pp) =>
+                props.token.user_id == pp.user.id )} />
             </div>
           } />
           <Route path="/users" exact={true} render={() =>

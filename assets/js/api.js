@@ -8,11 +8,11 @@ class TheServer {
       dataType: "json",
       contentType: "application/json; charset=UTF-8",
       success: (resp) => {
-        let finData = _.filter(resp.data, (pp) =>
-                      uid == pp.user.id )
+        // let finData = _.filter(resp.data, (pp) =>
+        //               uid == pp.user.id )
         store.dispatch({
           type: 'TASKS_LIST',
-          tasks: finData,
+          tasks: resp.data,
         });
       },
     });
@@ -57,7 +57,7 @@ class TheServer {
       contentType: "application/json; charset=UTF-8",
       data: JSON.stringify({ token: data.token, task: data }),
       success: (resp) => {
-        
+
         if (resp.data.user.id == id){
         store.dispatch({
           type: 'ADD_TASK',

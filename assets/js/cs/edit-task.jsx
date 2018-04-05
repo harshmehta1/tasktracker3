@@ -44,7 +44,9 @@ function EditTask(params) {
   }
 
   function submit(ev) {
-    if (params.form.time_spent % 15 == 0){
+    if (params.form.title == "" || params.form.desc == "" || params.form.user_id == "" || params.form.time_spent == ""){
+      alert("Cannot submit incomplete form");
+    } else if (params.form.time_spent % 15 == 0){
       api.update_task(params.form, params.task.id);
       // api.request_tasks(params.user);
       loaded = false;
