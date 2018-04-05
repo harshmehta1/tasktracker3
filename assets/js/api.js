@@ -122,3 +122,4 @@ class TheServer {
 }
 
 export default new TheServer();
+// Attribution - http://www.ccs.neu.edu/home/ntuck/courses/2018/01/cs4550/notes/20-redux/notes.html

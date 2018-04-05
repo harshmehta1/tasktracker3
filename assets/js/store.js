@@ -2,20 +2,6 @@ import { createStore, combineReducers } from 'redux';
 import deepFreeze from 'deep-freeze';
 
 
-
-/*
- *  state layout:
- *  {
- *   posts: [... Posts ...],
- *   users: [... Users ...],
- *   form: {
- *     user_id: null,
- *     body: "",
- *   }
- * }
- *
- * */
-
 function tasks(state = [], action) {
   switch (action.type) {
    case 'TASKS_LIST':
@@ -127,3 +113,4 @@ function root_reducer(state0, action) {
 
 let store = createStore(root_reducer);
 export default store;
+// Attribution - http://www.ccs.neu.edu/home/ntuck/courses/2018/01/cs4550/notes/20-redux/notes.html

@@ -13,15 +13,6 @@ defmodule TasktrackerWeb.TaskController do
 
   def create(conn, %{"task" => task_params, "token" => token}) do
     {:ok, user_id} = Phoenix.Token.verify(conn, "auth token", token, max_age: 86400)
-    # user_val = task_params["user_id"]
-    # if (!is_number(user_val)) do
-    #   user_val = String.to_integer(task_params["user_id"])
-    # end
-    # if user_val != user_id do
-    #   IO.inspect({:bad_match, user_val, user_id})
-    #   raise "hax!"
-    # end
-
     with {:ok, %Task{} = task} <- Tasks.create_task(task_params) do
       conn
       |> put_status(:created)
@@ -50,3 +41,5 @@ defmodule TasktrackerWeb.TaskController do
     end
   end
 end
+
+# Attribution - http://www.ccs.neu.edu/home/ntuck/courses/2018/01/cs4550/notes/20-redux/notes.html
